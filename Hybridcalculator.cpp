@@ -82,7 +82,8 @@ public:
     {
         cout << "1. power" << endl
              << "2. factorial" << endl
-             << "3. percentage" << endl;
+             << "3. percentage" << endl
+             << "4. Trigonometric Values"<<endl;
     }
     int chose_operator1()
     {
@@ -105,6 +106,10 @@ public:
         {
             percentage();
             
+        }
+        else if (q == 4)
+        {
+           trigonometric_values();
         }
         else {
             cout<<"invalid operator"<<endl;
@@ -136,42 +141,32 @@ public:
     cin >> d >> v;
     cout<<"the percentage of the two numbers are = "<<((d+v)/2)<<"%"<<endl;
     }
+    void trigonometric_values(){
+    float angleDegrees;
+    cout<<"enter the angle :-";
+    cin>>angleDegrees;
+    float angleRadians = angleDegrees * M_PI / 180.0;
+
+    cout << "The value of sin("<<angleRadians<<") is: " << sin(angleRadians) << endl;
+    cout << "The value of cos("<<angleRadians<<") is: " << cos(angleRadians) << endl;
+    cout << "The value of tan("<<angleRadians<<") is: " << tan(angleRadians) << endl;
+}
 };
-class Hybrid_Calculator :  public Simple_Calculator, public Scientific_Calculator{
-    public:
-    
-       
-        void operators(){
-            Simple_Calculator :: operators();
-        }
-        int chose_operator(){
-            Simple_Calculator :: chose_operator();
-        }
-        
-        void operators1(){
-            Scientific_Calculator :: operators1();
-        }
-        int chose_operator1(){
-            Scientific_Calculator :: chose_operator1();
-        }
+class Calculator :  public Simple_Calculator, public Scientific_Calculator{
+   
 };
 int main()
 {
-    Simple_Calculator s;
+    Calculator calc;
     float a, b;
     cout<<"enter two numbers for simple calculations:-";
     cin >> a >> b;
-    s.set_number(a, b);
-    s.operators();
-    s.chose_operator();
-    Scientific_Calculator r;
-    r.operators1();
-    r.chose_operator1();
-    Hybrid_Calculator i;
-    i.set_number(a,b);
-    i.operators();
-    i.chose_operator();
-    i.operators1();
-    i.chose_operator1();
+    calc.set_number(a, b);
+    calc.operators();
+    calc.chose_operator();
+    calc.operators1();
+    calc.chose_operator1();
     return 0;
 }
+   
+    
